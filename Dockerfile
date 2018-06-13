@@ -23,5 +23,12 @@ RUN apt update && \
     apt autoclean && \
     rm -rf /var/lib/apt/lists/* /var/log/dpkg.log
 
+WORKDIR /opt
+RUN git clone https://github.com/PacificBiosciences/pbh5tools.git && \
+    cd pbh5tools && \
+    python setup.py install && \
+    cd /opt && \
+    rm -rf pbh5tools
+
 VOLUME /data
 WORKDIR /data
