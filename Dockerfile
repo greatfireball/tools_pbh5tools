@@ -14,5 +14,14 @@ LABEL maintainer="frank.foerster@ime.fraunhofer.de" \
       org.label-schema.build-date=${BUILD_DATE} \
       org.label-schema.vcs-url="https://github.com/greatfireball/tools_pbh5tools.git"
 
+RUN apt update && \
+    apt install --yes \
+       build-essential \
+       git \
+       python \
+       python-setuptools && \
+    apt autoclean && \
+    rm -rf /var/lib/apt/lists/* /var/log/dpkg.log
+
 VOLUME /data
 WORKDIR /data
